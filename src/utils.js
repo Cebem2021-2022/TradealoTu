@@ -6,6 +6,8 @@ La función debe devolver un array con los exchanges que cumplan las siguientes 
 Si a la función se le pasa un parametro name que sea falsy, no filtrará por name
 Si a la función se le pasa un parametro trust_score que se falsy, no filtrará por trust_score
 
+
+La lista de exchanges (array) que se le pasará será parecida a la que está almacenada en test/exchangesMock.json
  */
 export function filterExchanges(lista, name, trust_score) {
   // <<<<Tu código aquí>>>> 
