@@ -10,5 +10,13 @@ Si a la función se le pasa un parametro trust_score que se falsy, no filtrará 
 La lista de exchanges (array) que se le pasará será parecida a la que está almacenada en test/exchangesMock.json
  */
 export function filterExchanges(lista, name, trust_score) {
-  // <<<<Tu código aquí>>>> 
+  let filtered=[...lista]
+  if(name)
+    filtered = filtered.filter(d=>d.name.toLowerCase().includes(name.toLowerCase()) )
+  if(trust_score)
+    filtered = filtered.filter(d=>d.trust_score > trust_score)
+  return filtered
+
+
+  
 }

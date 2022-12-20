@@ -20,7 +20,8 @@ describe('empty spec', () => {
   */
   it('test 1', () => {
     const filtered = filterExchanges(listExchangesMock, null, undefined)
-    // <<<<Tu código aquí>>>> 
+    expect(filtered).toBeInstanceOf(Array)
+    expect(filtered).toHaveLength(100)
   })
 
   /** 
@@ -28,16 +29,20 @@ describe('empty spec', () => {
    la función filterExchanges debe devolver un array de 1 elemento
   */
   it('test 2', () => {
-    // <<<<Tu código aquí>>>> 
+    const filtered = filterExchanges(listExchangesMock, 'cake', 1)
+    expect(filtered).toBeInstanceOf(Array)
+    expect(filtered).toHaveLength(1)
   })
 
 
    /** 
    si filtramos los exchanges con nombre=null' y trust_score=9, 
-   la función filterExchanges debe devolver un array de 9 elementos
+   la función filterExchanges debe devolver un array de 8 elementos
   */
    it('test 3', () => {
-    // <<<<Tu código aquí>>>> 
+    const filtered = filterExchanges(listExchangesMock, null, 9)
+    expect(filtered).toBeInstanceOf(Array)
+    expect(filtered).toHaveLength(8)
   })
 
    /** 
@@ -45,7 +50,9 @@ describe('empty spec', () => {
    la función filterExchanges debe devolver un array vacio
   */
    it('test 4', () => {
-    // <<<<Tu código aquí>>>> 
+    const filtered = filterExchanges(listExchangesMock, null, 10)
+    expect(filtered).toBeInstanceOf(Array)
+    expect(filtered).toHaveLength(0)
   })
 
   /** 
@@ -57,7 +64,13 @@ describe('empty spec', () => {
 
   */
   it('test 5', () => {
-    // <<<<Tu código aquí>>>> 
+    const filtered = filterExchanges(listExchangesMock, 'bi', 1)
+    const obj = {
+      name: 'Huobi',
+      image:'https://assets.coingecko.com/markets/images/25/small/logo_V_colour_black.png?1669177364',
+      trust_score: 10,
+    }
+    expect(filtered[0]).toEqual(expect.objectContaining(obj))
   })
 
 

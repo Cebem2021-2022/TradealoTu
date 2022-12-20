@@ -8,14 +8,28 @@ let fullExchangesList = []
 // Captura el evento de envio del formulario
 // y filtra los datos (guardados en el array global fullExchangesList) en función 
 // de los valores de los inputs del formulario
+document.querySelector('form').addEventListener('submit', e => {
+    e.preventDefault()
+    const name = document.querySelector('#name').value
+    const trust_score = document.querySelector('#score').value
+    const filtered = filterExchanges(fullExchangesList, name, trust_score)
+    console.log(filtered)
+    document.querySelector('#count').innerHTML=`${filtered.length} resultados`
+    const msg = filtered.map(e=>{
+        return `<img src='${e.image}'>  ${e.name}    ` 
+    }).join('<br/>') 
+    document.querySelector('#results').innerHTML=msg
 
+
+})
 
 
 /*
 Esta función lee los datos de la API Coingecko y devuelve una array con todos los exchanges
 */
 async function readDataFromApi(){
-    // <<<<Tu código aquí>>>> 
+    const request = await fetch('https://api.coingecko.com/api/v3/exchanges')
+    return await request.json()
 }
 
 
